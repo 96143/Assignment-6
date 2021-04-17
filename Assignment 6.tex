@@ -1,0 +1,223 @@
+\documentclass[journal,12pt,twocolumn]{IEEEtran}
+
+\usepackage{setspace}
+\usepackage{gensymb}
+\singlespacing
+\usepackage[cmex10]{amsmath}
+
+\usepackage{amsthm}
+
+\usepackage{mathrsfs}
+\usepackage{txfonts}
+\usepackage{stfloats}
+\usepackage{bm}
+\usepackage{cite}
+\usepackage{cases}
+\usepackage{subfig}
+
+\usepackage{longtable}
+\usepackage{multirow}
+
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{steinmetz}
+\usepackage{tikz}
+\usepackage{circuitikz}
+\usepackage{verbatim}
+\usepackage{tfrupee}
+\usepackage[breaklinks=true]{hyperref}
+\usepackage{graphicx}
+\usepackage{tkz-euclide}
+
+\usetikzlibrary{calc,math}
+\usepackage{listings}
+    \usepackage{color}                                            %%
+    \usepackage{array}                                            %%
+    \usepackage{longtable}                                        %%
+    \usepackage{calc}                                             %%
+    \usepackage{multirow}                                         %%
+    \usepackage{hhline}                                           %%
+    \usepackage{ifthen}                                           %%
+    \usepackage{lscape}     
+\usepackage{multicol}
+\usepackage{chngcntr}
+
+\DeclareMathOperator*{\Res}{Res}
+
+\renewcommand\thesection{\arabic{section}}
+\renewcommand\thesubsection{\thesection.\arabic{subsection}}
+\renewcommand\thesubsubsection{\thesubsection.\arabic{subsubsection}}
+
+\renewcommand\thesectiondis{\arabic{section}}
+\renewcommand\thesubsectiondis{\thesectiondis.\arabic{subsection}}
+\renewcommand\thesubsubsectiondis{\thesubsectiondis.\arabic{subsubsection}}
+
+
+\hyphenation{op-tical net-works semi-conduc-tor}
+\def\inputGnumericTable{}                                 %%
+
+\lstset{
+%language=C,
+frame=single, 
+breaklines=true,
+columns=fullflexible
+}
+\begin{document}
+
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{problem}{Problem}
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{example}{Example}[section]
+\newtheorem{definition}[problem]{Definition}
+
+\newcommand\Myperm[2][^n]{\prescript{#1\mkern-2.5mu}{}P_{#2}}
+\newcommand\Mycomb[2][^n]{\prescript{#1\mkern-0.5mu}{}C_{#2}}
+\newcommand{\BEQA}{\begin{eqnarray}}
+\newcommand{\EEQA}{\end{eqnarray}}
+\newcommand{\define}{\stackrel{\triangle}{=}}
+\bibliographystyle{IEEEtran}
+\raggedbottom
+\setlength{\parindent}{0pt}
+\providecommand{\mbf}{\mathbf}
+\providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+\providecommand{\qfunc}[1]{\ensuremath{Q\left(#1\right)}}
+\providecommand{\sbrak}[1]{\ensuremath{{}\left[#1\right]}}
+\providecommand{\lsbrak}[1]{\ensuremath{{}\left[#1\right.}}
+\providecommand{\rsbrak}[1]{\ensuremath{{}\left.#1\right]}}
+\providecommand{\brak}[1]{\ensuremath{\left(#1\right)}}
+\providecommand{\lbrak}[1]{\ensuremath{\left(#1\right.}}
+\providecommand{\rbrak}[1]{\ensuremath{\left.#1\right)}}
+\providecommand{\cbrak}[1]{\ensuremath{\left\{#1\right\}}}
+\providecommand{\lcbrak}[1]{\ensuremath{\left\{#1\right.}}
+\providecommand{\rcbrak}[1]{\ensuremath{\left.#1\right\}}}
+\theoremstyle{remark}
+\newtheorem{rem}{Remark}
+\newcommand{\sgn}{\mathop{\mathrm{sgn}}}
+\providecommand{\abs}[1]{\left\vert#1\right\vert}
+\providecommand{\res}[1]{\Res\displaylimits_{#1}} 
+\providecommand{\norm}[1]{\left\lVert#1\right\rVert}
+%\providecommand{\norm}[1]{\lVert#1\rVert}
+\providecommand{\mtx}[1]{\mathbf{#1}}
+\providecommand{\mean}[1]{E\left[ #1 \right]}
+\providecommand{\fourier}{\overset{\mathcal{F}}{ \rightleftharpoons}}
+%\providecommand{\hilbert}{\overset{\mathcal{H}}{ \rightleftharpoons}}
+\providecommand{\system}{\overset{\mathcal{H}}{ \longleftrightarrow}}
+	%\newcommand{\solution}[2]{\textbf{Solution:}{#1}}
+\newcommand{\solution}{\noindent \textbf{Solution: }}
+\newcommand{\cosec}{\,\text{cosec}\,}
+\providecommand{\dec}[2]{\ensuremath{\overset{#1}{\underset{#2}{\gtrless}}}}
+\newcommand{\myvec}[1]{\ensuremath{\begin{pmatrix}#1\end{pmatrix}}}
+\newcommand{\mydet}[1]{\ensuremath{\begin{vmatrix}#1\end{vmatrix}}}
+\numberwithin{equation}{subsection}
+\makeatletter
+\@addtoreset{figure}{problem}
+\makeatother
+\let\StandardTheFigure\thefigure
+\let\vec\mathbf
+\renewcommand{\thefigure}{\theproblem}
+\def\putbox#1#2#3{\makebox[0in][l]{\makebox[#1][l]{}\raisebox{\baselineskip}[0in][0in]{\raisebox{#2}[0in][0in]{#3}}}}
+     \def\rightbox#1{\makebox[0in][r]{#1}}
+     \def\centbox#1{\makebox[0in]{#1}}
+     \def\topbox#1{\raisebox{-\baselineskip}[0in][0in]{#1}}
+     \def\midbox#1{\raisebox{-0.5\baselineskip}[0in][0in]{#1}}
+\vspace{3cm}
+\title{AI5002: Assignment 6}
+\author{Pradyumn Sharma\\ AI21MTECH02001}
+\maketitle
+\newpage
+\bigskip
+\renewcommand{\thefigure}{\theenumi}
+\renewcommand{\thetable}{\theenumi}
+%
+latex codes from 
+%
+\begin{lstlisting}
+https://github.com/96143/Assignment-3/tree/main
+\end{lstlisting}
+\section{Problem}
+An urn contains 25 balls of which 10 balls
+bear a mark ’X’ and the remaining 15 bear a
+mark ’Y’. A ball is drawn at random from the
+urn, its mark is noted down and it is replaced.
+If 6 balls are drawn in this way, find the
+probability that
+\begin{enumerate}
+    \item  all will bear ’X’ mark.
+    \item  not more than 2 will bear ’Y’ mark.
+    \item  at least one ball will bear ’Y’ mark.
+    \item  the number of balls with ’X’ mark and
+’Y’ mark will be equal.
+\end{enumerate}
+\section{Solution}
+Let X be the number of balls with mark 'X' \\
+Drawing a ball is a Bernoulli trial\\ 
+So X has a Binomial distribution
+\begin{equation}\label{eq:1}
+    P(X=x) = \Mycomb[n]{x} p^x q^{n-x}
+\end{equation}
+Here, \\
+number of balls drawn = n = 6\\
+probability of getting ball with 'X' mark = p = $\frac{10}{25}$ = $\frac{2}{5}$\\
+q = 1 - p = $\frac{3}{5}$\\
+Hence, 
+\begin{equation}\label{eq:2}
+    P(X=x) = \Mycomb[6]{x} \left(\frac{2}{5}\right)^x \left(\frac{3}{5}\right)^{6-x}
+\end{equation}
+\begin{enumerate}
+    \item probability that all will bear ’X’ mark
+    probability that all will bear ’X’ mark = P(X=6)
+    Putting x = 6 in \eqref{eq:2}
+\begin{alignat*}{3}
+    P(X=6) = \Mycomb[6]{6} \left(\frac{2}{5}\right)^6 \left(\frac{3}{5}\right)^{6-6}\\
+    = \Mycomb[6]{6} \left(\frac{2}{5}\right)^6 \left(\frac{3}{5}\right)^{0}\\
+    = \left(\frac{2}{5}\right)^6
+\end{alignat*}
+\item probability that not more than 2 will bear ’Y’ mark
+\begin{equation*}
+\begin{split}
+    P(not~more~than~2~’Y’)\\
+    = P(6X,0Y)+P(5X,1Y)+P(4X,2Y)
+\end{split}
+\end{equation*}
+\begin{equation*}
+\begin{split}
+    = \Mycomb[6]{6} \left(\frac{2}{5}\right)^6 \left(\frac{3}{5}\right)^{6-6} + \Mycomb[6]{5} \left(\frac{2}{5}\right)^5 \left(\frac{3}{5}\right)^{6-5} + \Mycomb[6]{4} \left(\frac{2}{5}\right)^4 \left(\frac{3}{5}\right)^{6-4}\\
+    = \Mycomb[6]{6} \left(\frac{2}{5}\right)^6 \left(\frac{3}{5}\right)^{0} + \Mycomb[6]{5} \left(\frac{2}{5}\right)^5 \left(\frac{3}{5}\right)^{1} + \Mycomb[6]{4} \left(\frac{2}{5}\right)^4 \left(\frac{3}{5}\right)^{2}
+\end{split}
+\end{equation*}
+\begin{equation*}
+     = 7 \left(\frac{2}{5}\right)^4
+\end{equation*}
+\item probability that at least one ball will bear ’Y’ mark
+\begin{equation*}
+     P(at~least~one~ball~bear~’Y’) = 1 - P(no~ball~bear~'Y')\\
+\end{equation*}
+\begin{equation*}
+\begin{split}
+     =  1 - P(all~balls~bear~'X')\\
+     = 1 - P(X = 6)
+\end{split}
+\end{equation*}
+\begin{equation*}
+\begin{split}
+    = 1 - \Mycomb[6]{6} \left(\frac{2}{5}\right)^6 \left(\frac{3}{5}\right)^{6-6}\\
+    = 1 - \Mycomb[6]{6} \left(\frac{2}{5}\right)^6 \left(\frac{3}{5}\right)^{0}\\
+    = 1 - \left(\frac{2}{5}\right)^6
+\end{split}
+\end{equation*}
+\item probability that the number of balls with ’X’ mark and
+’Y’ mark will be equal
+\begin{equation*}
+\begin{split}
+     P(X~\&~Y~balls~are~equal) = P(X=3)\\
+    = \Mycomb[6]{3} \left(\frac{2}{5}\right)^3 \left(\frac{3}{5}\right)^{6-3}\\
+    = \Mycomb[6]{6} \left(\frac{2}{5}\right)^3 \left(\frac{3}{5}\right)^{3}\\
+    = 20 \left(\frac{2}{5}\right)^3 \left(\frac{3}{5}\right)^{3}\\
+    = \frac{864}{3125}
+\end{split}
+\end{equation*}
+\end{enumerate}
+\end{document}
